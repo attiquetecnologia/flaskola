@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1> Bem vindo ao Flaskola! </h1>
+<h1> Olá, {{ nome }} bem vindo ao Flaskola! </h1>
 <p>Este é o seu primeiro aplicativo WEB</p>
 <a href="{{ url_for('login') }}"> Faça Login!</a>
 <a href="{{ url_for('alunos') }}"> Alunos!</a>
