@@ -12,7 +12,11 @@ def create_app(): # cria uma função para definir o aplicativo
     def alunos():
         import json
         from database.dados import alunos
-        return render_template("lista.html", alunos=alunos )
+
+        # Função lambda cria funções de 1 linha só
+        media = lambda t,p1,p2: t*.3+p1*.35+p2*.35
+        
+        return render_template("lista.html", alunos=alunos, media=media )
 
     @app.route("/login")
     def login():

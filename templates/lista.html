@@ -1,10 +1,33 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Lista de Alunos</h1>
 {% for k,v in alunos.items() %}
-
-<div>
-    <img src="{{ v['avatar'] }}" width="100" 
-    style="border-radius: 20px 20px 20px 20px;">
-    <p>{{ v['nome'] }}</p>
-    <p><strong>Trabalho</strong> {{ v['t']}}, <strong>Prova1</strong> {{ v['p1']}}</p>
-</div>
-
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ v['avatar'] }}" class="img-fluid rounded-start" alt="{{ v['avatar'] }}" tyle="border-radius: 20px 20px 20px 20px;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ v['nome'] }}</h5>
+          <ul>Notas
+            <li><strong>Trabalho:</strong> {{ v['t'] }}, <strong>Prova 1:</strong> {{ v['p1'] }}, <strong>Prova 2:</strong> {{ v['p2'] }}</li>
+            <li><strong>Média:</strong> {{ v['t']*0.3+v['p1']*0.35+v['p2']*0.35 }}</li>
+            <li><strong>Média:</strong> {{ media(v['t'],v['p1'],v['p2']) }}</li>
+          </ul>
+          {% if media(v['t'],v['p1'],v['p2'])<3 %}
+          <p class="card-text bg-danger text-white">Reprovado</p>
+          {% elif media(v['t'],v['p1'],v['p2'])>3 and media(v['t'],v['p1'],v['p2'])<7 %}
+          <p class="card-text bg-warning text-white">Recuperação</p>
+          {% else %}
+          <p class="card-text bg-success text-white">Aprovado</p>
+          <a class="btn btn-primary" href="" >Perfil</a> | 
+          <a class="btn btn-danger" href="" >Excluir</a>
+        {%endif%}
+        <p>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endfor %}
+{% endblock %}
