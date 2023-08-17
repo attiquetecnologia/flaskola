@@ -22,7 +22,7 @@ def create_app(): # cria uma função para definir o aplicativo
 
     @app.route("/login")
     def login():
-        return "<H1>Login ainda não implementado</h1>"
+        return render_template("login.html")
     
     return app # retorna o app criado
 

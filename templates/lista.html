@@ -1,5 +1,5 @@
-{# extends 'layout.html' #}
-{# block content #}
+{% extends 'layout.html' %}
+{% block content %}
 <h1>Lista de Alunos</h1>
 {% for k,v in alunos.items() %}
 <div class="card mb-3" style="max-width: 540px;">
@@ -11,8 +11,8 @@
         <div class="card-body">
           <h5 class="card-title">{{ v['nome'] }}</h5>
           <ul>Notas
-            <li><strong>Trabalho:</strong> ?, <strong>Prova 1:</strong> ?, <strong>Prova 2:</strong> ?</li>
-            <li><strong>Média:</strong> ?</li> <!-- use a função media -->
+            <li><strong>Trabalho:</strong> {{ v['t'] }}, <strong>Prova 1:</strong> {{ v['p1'] }}, <strong>Prova 2:</strong> {{ v['p2'] }}</li>
+            <li><strong>Média:</strong> {{ media(v['t'], v['p1'], v['p2']) }}</li> <!-- use a função media -->
           </ul>
           <!-- se meida <3 -->
           <p class="card-text bg-danger text-white">Reprovado</p>
@@ -29,4 +29,4 @@
     </div>
   </div>
 {% endfor %}
-{# endblock #}
+{% endblock %}
