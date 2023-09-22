@@ -2,8 +2,13 @@
 
 {% block content %}
 <div class="container">
-    <h1>Faça login para usar o sistema!</h1>
+    <h1>Perfil de usuário: {{ usuario.get("nome") }}</h1>
     <form method="post">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Nome</label>
+          <input type="nome" name="nome" value="{{ usuario.get("nome") }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email</label>
           <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
