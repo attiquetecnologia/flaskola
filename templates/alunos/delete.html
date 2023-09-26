@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container">
+    <form method="post">
+        <h1>Tem certeza que deseja apagar o aluno {{ aluno['nome'] }} ?</h1>
+        <button type="submit"></button>
+    </form>
+</div>
+{% endblock %}
