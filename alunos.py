@@ -19,7 +19,11 @@ def add():
 
 @bp.route("/alunos/<int:id>/delete")
 def delete(id):
-    return render_template("alunos/delete.html")
+    from database.dados import alunos
+
+    aluno = alunos.get(id)
+
+    return render_template("alunos/delete.html", id=id, aluno=aluno)
 
 @bp.route("/alunos/<int:id>/edit")
 def edit(id):

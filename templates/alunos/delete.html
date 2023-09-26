@@ -4,7 +4,9 @@
 <div class="container">
     <form method="post">
         <h1>Tem certeza que deseja apagar o aluno {{ aluno['nome'] }} ?</h1>
-        <button type="submit"></button>
+        <input type="hidden" value="{{ id }}" /> <!-- hidden não aparece para usuario -->
+        <button class="btn btn-primary" type="submit">Sim tenho certeza!</button>
+        <a href="{{ url_for("Aluno.lista") }}" class="btn btn-secondary">Não</a>
     </form>
 </div>
 {% endblock %}
