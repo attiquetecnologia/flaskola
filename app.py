@@ -59,6 +59,9 @@ def create_app(): # cria uma função para definir o aplicativo
         
         return render_template("perfil.html", usuario=usuario)
 
+    from alunos import bp
+    app.register_blueprint(bp)
+
     return app # retorna o app criado
 
 if __name__ == "__main__": # 'função principal' do python
