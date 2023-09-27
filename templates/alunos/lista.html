@@ -2,7 +2,10 @@
 {% block content %}
 
 <div class="container">
-    <h1>Lista de Alunos</h1>
+    <div class="d-flex flex-row">
+        <h1>Lista de Alunos</h1>
+        <a class="btn btn-primary" href="{{ url_for("Aluno.add") }}">Adicionar</a>
+    </div>
     <div class="row">
     {% for id, aluno in alunos.items() %}
         <div class="col-md-3" style="border: 1px solid; margin: 5px; padding: 5px;">
@@ -11,7 +14,7 @@
                   <img src="{{ aluno['avatar'] }}" alt="{{ aluno['nome'] }}" width="100">
                 </div>
                 <div class="flex-grow-1 ms-3">
-                  <p><strong>Nome:</strong> {{ aluno['nome'] }}</p>
+                  <p><strong>Nome:</strong> {{ aluno['nome'] }} (id: {{ id }} )</p>
                   <p><strong>Email:</strong> {{ aluno['usuario'] }}</p> 
                 </div><!-- ./flex-grow-1 -->    
             </div><!-- ./d-flex-->

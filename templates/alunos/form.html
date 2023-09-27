@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <form method="post" class="row g-3">
-        <h1>Cadastro de Alunos</h1>
+        <h1>Cadastro de Alunos {{ "| EDIT: %s" % id if request.endpoint=="Aluno.edit" else "" }}</h1>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul class=flashes>
