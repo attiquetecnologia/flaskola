@@ -59,6 +59,9 @@ def create_app(): # cria uma função para definir o aplicativo
         
         return render_template("perfil.html", usuario=usuario)
 
+    from componentes import bp
+    app.register_blueprint(bp)
+
     from alunos import bp
     app.register_blueprint(bp)
 
