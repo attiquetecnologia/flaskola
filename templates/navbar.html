@@ -12,6 +12,17 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('Aluno.lista') }}">Alunos</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Componentes
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url_for("Componentes.estados") }}">Estados</a></li>
+              <li><a class="dropdown-item" href="{{ url_for("Componentes.carros") }}">Carros</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{ url_for("Componentes.calc_parcelas") }}">Calculadora de parcelas</a></li>
+            </ul>
+          </li>
           {% if 'user' in session %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

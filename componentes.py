@@ -10,10 +10,9 @@ def estados():
 
 @bp.route("/carros", methods=("GET", "POST"))
 def carros():
-    carros = {"VW": ["Gol", "Fox"]
-        , "Ford": ["Prisma", "Camaro"]
-        , "Chevrolet": ["Onix", "Fiesta"]
-    }
+    marcas = ["VW", "Ford", "Chevrolet"]
+    modelos = ["Gol", "Fox", "Prisma", "Camaro", "Onix", "Fiesta"]
+    
     mensagem = None
     if request.method=="POST":
         marca = request.form.get("marca")
@@ -24,4 +23,16 @@ def carros():
         else:
             mensagem = "Sinto muito combinação incorreta!!!"
 
-    return render_template("componentes/carros.html", marcas=carros.keys(), modelos=[c for c in carros.], mensagem=mensagem)
+    return render_template("componentes/carros.html", marcas=marcas, modelos=modelos, mensagem=mensagem)
+
+@bp.route("/parcelas", methods=("GET", "POST"))
+def calc_parcelas():
+    resultado = None
+    if request.method == "POST":
+        total = float(request.form.get("total"))
+        juros = float(request.form.get("juros"))
+        parcelas = int(request.form.get("parcelas"))
+
+        resultado = (total/parcelas)+(total/parcelas)*juros/100
+
+    return render_template("componentes/calc_parcelas.html", resultado=resultado)

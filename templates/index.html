@@ -6,6 +6,6 @@
 <p>{{ session['user'] }}</p>
 {% endif %}
 <p>Este é o seu primeiro aplicativo WEB</p>
-<a href="{{ url_for('login') }}"> Faça Login!</a>
-<a href="{{ url_for('alunos') }}"> Alunos!</a>
+<a href="{{ url_for('Usuario.login') }}"> Faça Login!</a>
+<a href="{{ url_for('Aluno.lista') }}"> Alunos!</a>
 {% endblock %}
