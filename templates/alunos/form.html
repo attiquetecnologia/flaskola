@@ -22,27 +22,27 @@
         <div class="col-6">
             <label class="form-label">Nome</label>
             <input type="text" class="form-control" name="nome" 
-                placeholder="Nome completo" value="{{ aluno.get('nome') if aluno else ''}}" required>
+                placeholder="Nome completo" value="{{ aluno.nome if aluno else ''}}" required>
         </div>
         <div class="col-md-6">
             <label class="form-label">Melhor Email</label>
             <input type="email" class="form-control" name="email" 
-                placeholder="Melhor email"  value="{{ aluno.get('usuario') if aluno else ''}}" required>
+                placeholder="Melhor email"  value="{{ aluno.email if aluno else ''}}" required>
         </div>
         <div class="col-md-4">
             <label class="form-label">Nota de trabalho</label>
             <input type="number" class="form-control" name="t" max="10.0" min="0.0" step="any" required
-                placeholder="Nota de trabalho" value="{{ aluno.get('t') if aluno else ''}}">
+                placeholder="Nota de trabalho" value="{{ aluno.t if aluno else ''}}">
         </div>
         <div class="col-md-4">
             <label class="form-label">Prova 1</label>
-            <input type="number" class="form-control" name="p1" max="10" min="0" required
-                placeholder="Nota da primeira prova" value="{{ aluno.get('p1') if aluno else ''}}">
+            <input type="number" class="form-control" name="p1" max="10" min="0" step="any" required
+                placeholder="Nota da primeira prova" value="{{ aluno.p1 if aluno else ''}}">
         </div>
         <div class="col-md-4">
             <label class="form-label">Prova 2</label>
-            <input type="number" class="form-control" name="p2" max="10" min="0" required
-                placeholder="Nota da segunda prova" value="{{ aluno.get('p2') if aluno else ''}}">
+            <input type="number" class="form-control" name="p2" max="10" min="0" step="any" required
+                placeholder="Nota da segunda prova" value="{{ aluno.p2 if aluno else ''}}">
         </div>
         
         <div class="col-12">
