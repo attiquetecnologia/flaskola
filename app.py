@@ -1,13 +1,14 @@
 import click
 from flask import Flask, render_template
 from flask.cli import with_appcontext
+from sqlalchemy import text
 from database.connection import db
 
 def create_app(): # cria uma função para definir o aplicativo
     app = Flask(__name__) # instancia o Flask
     app.secret_key = "abax"
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root:5e5i\@123@localhost:3306/projeto"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root:5e5i#123@localhost:3306/flaskola"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     db.init_app(app)
@@ -16,6 +17,7 @@ def create_app(): # cria uma função para definir o aplicativo
     @app.route("/") # cria uma rota
     def index(): # função que gerencia rota
         nome = "Rodrigo 123"
+
         return render_template("index.html", nome=nome) # combina o python com html
 
     from componentes import bp

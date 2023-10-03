@@ -7,6 +7,9 @@
         <a class="btn btn-primary" href="{{ url_for("Aluno.add") }}">Adicionar</a>
     </div>
     <div class="row">
+    {% for l in lista %}
+    <p>{{ l }}</p>
+    {% endfor %}
     {% for id, aluno in alunos.items() %}
         <div class="col-md-3" style="border: 1px solid; margin: 5px; padding: 5px;">
             <div class="d-flex">
