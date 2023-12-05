@@ -8,7 +8,7 @@ def create_app(): # cria uma função para definir o aplicativo
     app = Flask(__name__) # instancia o Flask
     app.secret_key = "abax"
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://flaskola:5e5i_123@localhost:5432/flaskola"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://flaskola:5e5i_123@localhost:5432/flaskola"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     db.init_app(app)
@@ -33,8 +33,8 @@ def create_app(): # cria uma função para definir o aplicativo
 
 def init_db():
     db.drop_all()
-    # db.create_all()
-    db.reflect()
+    db.create_all()
+    # db.reflect()
 
 
 @click.command("init-db")
@@ -47,4 +47,4 @@ def init_db_command():
     
 
 if __name__ == "__main__": # 'função principal' do python
-    create_app().run(debug=True) # executa o flask na porta http://127.0.0.1:5000
+    create_app().run(debug=True, host="0.0.0.0") # executa o flask na porta http://127.0.0.1:5000
