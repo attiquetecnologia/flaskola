@@ -8,7 +8,7 @@ def create_app(): # cria uma função para definir o aplicativo
     app = Flask(__name__) # instancia o Flask
     app.secret_key = "abax"
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://flaskola:5e5i_123@localhost:5432/flaskola"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///flaskola.db"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     db.init_app(app)
