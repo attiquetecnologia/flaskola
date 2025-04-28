@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página do Aluno</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      display: flex;
+      height: 100%;
+    }
+
+    .sidebar {
+      width: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      height: 100vh; /* Sidebar ocupa toda a altura da página */
+    }
+
+    .sidebar h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 200px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Mantém o conteúdo no topo */
+      height: 100vh; /* Faz com que o conteúdo ocupe toda a altura da página */
+    }
+
+    .main {
+      background-color: #add2e6;
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 800px;
+      height: 100%; /* Faz a área azul ocupar toda a altura da página */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centraliza o conteúdo verticalmente */
+      align-items: center; /* Centraliza o conteúdo horizontalmente */
+      text-align: center;
+      box-sizing: border-box; /* Inclui o padding no cálculo da altura */
+    }
+
+    .main h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .main p {
+      font-size: 24px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .image-placeholder {
+      width: 460px;
+      height: 260px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #ccc;
+      margin: 0 auto;
+    }
+
+    .image-placeholder img {
+      width: 80px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Nome do Aluno</h2>
+  </div>
+
+  <div class="container">
+    <div class="main">
+      <h1>TITULO</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua...
+      </p>
+      <div class="image-placeholder">
+        <img src="https://img.icons8.com/ios/100/image.png" alt="Imagem Placeholder">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
