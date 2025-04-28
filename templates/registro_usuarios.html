@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro SENAI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #aad0e6;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      display: block;
+      width: 40%;
+      margin: 10px auto;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid violet;
+      border-radius: 4px;
+    }
+
+    /* Estilo específico para o campo de data */
+    #nascimento {
+      width: 15%;
+      text-align: center;
+    }
+
+    label {
+      font-size: 20px;
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .forgot-password {
+      color: #000000;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn-cadastrar {
+      margin-top: 30px;
+      padding: 15px 85px;
+      font-size: 18px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-cadastrar:hover {
+      background-color: #005bb5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Nome do Usuário</h1>
+
+    <input type="text" placeholder="Nome do usuário">
+
+    <label for="nascimento">Data de nascimento</label>
+    <input type="text" id="nascimento" placeholder="DD/MM/YY">
+
+    <label>Email do usuário</label>
+    <input type="email" placeholder="Email do usuário">
+
+    <label>CPF</label>
+    <input type="text" placeholder="CPF">
+
+    <label>Senha</label>
+    <input type="password" placeholder="Senha">
+
+    <div class="forgot-password">Esqueceu a senha ?</div>
+
+    <button class="btn-cadastrar">Cadastrar</button>
+  </div>
+
+</body>
+</html>
