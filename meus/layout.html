@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+      }
+
+      .navbar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #609ab8;
+        padding: 0 30px;
+        height: 120px; 
+      }
+
+      .navbar-left,
+      .navbar-right {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .navbar-left img {
+        height: 65px;
+        cursor: pointer;
+      }
+
+      .navbar-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .navbar-center img {
+        height: 60px;
+      }
+
+      .navbar-right {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #f6efc2;
+        cursor: pointer;
+        background-color: transparent;
+        justify-content: center;
+      }
+
+      .navbar-right i {
+        color: #f6efc2;
+        font-size: 24px;
+      }
+
+      .content {
+        background-color: #ffffff;
+        min-height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-left">
+        <img src="menu_livros.png" alt="Ícone de pilha de livros" />
+      </div>
+      <div class="navbar-center">
+        <img src="logo_senai.png" alt="Logotipo do SENAI" />
+      </div>
+      <div class="navbar-right">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+    <div class="content"></div>
+  </body>
+</html>
+

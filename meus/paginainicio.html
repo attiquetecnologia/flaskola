@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login SENAI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    body {
+        background: url('imagem.png') no-repeat center center;
+        background-size: cover;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .login-box {
+        background: rgba(115, 146, 161, 0.453);
+        padding: 40px;
+        border-radius: 15px;
+        width: 400px;
+        text-align: center;
+        backdrop-filter: blur(1px);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .logo img {
+        max-width: 150px;
+        margin-bottom: 20px;
+    }
+    .form-control {
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 2;
+        position: relative;
+    }
+    .form-control::placeholder {
+        color: #ddd;
+    }
+    .input-group-text {
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+        border-radius: 5px;
+        z-index: 1;
+    }
+
+    .input-group-text .fa-user {
+        cursor: default;
+    }
+
+    .input-group-text .fa-eye, .input-group-text .fa-eye-slash {
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: red;
+        border: none;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .btn-primary:hover {
+        background: darkred;
+    }
+    .text-white {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-label, .btn-primary, .text-white {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<script>
+    function togglePassword() {
+        var passwordInput = document.getElementById("password");
+        var icon = document.getElementById("toggleIcon");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+</script>
+</head>
+<body>
+    <div class="login-box">
+        <div class="logo">
+            <img src="logo_senai.png" alt="Logo do SENAI">
+        </div>
+        <form>
+            <div class="mb-3 text-start">
+                <label class="form-label text-white">LOGIN</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Usuário">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
+            </div>
+            <div class="mb-3 text-start">
+                <label class="form-label text-white">SENHA</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" placeholder="Senha">
+                    <span class="input-group-text" onclick="togglePassword()">
+                        <i id="toggleIcon" class="fa fa-eye"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-3 text-end">
+                <a href="#" class="text-white text-decoration-none">Esqueceu a senha</a>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">ENTER</button>
+        </form>
+    </div>
+</body>
+</html>
