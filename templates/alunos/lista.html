@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="d-flex flex-row">
+        <h1>Lista de Alunos</h1>
+        <a class="btn btn-primary" href="{{ url_for("Aluno.add") }}">Adicionar</a>
+    </div>
+    <div class="row">
+    {% for aluno in lista %}
+        <div class="col-md-3" style="border: 1px solid; margin: 5px; padding: 5px;">
+            <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img src="{{ url_for('static', filename='/images/'+aluno.avatar if aluno.avatar else '') }}" alt="{{ aluno.nome }}" width="100">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <p><strong>Nome:</strong> {{ aluno.nome }} (id: {{ aluno.id }} )</p>
+                  <p><strong>Email:</strong> {{ aluno.usuario }}</p> 
+                </div><!-- ./flex-grow-1 -->    
+            </div><!-- ./d-flex-->
+            <hr>Notas
+            <p>
+                <strong>Prova 1:</strong> {{ aluno.p1 }} |
+                <strong>Prova 2:</strong> {{ aluno.p2 }} |
+                <strong>Trabalho:</strong> {{ aluno.t }}
+            </p>
+            <p><strong>Média:</strong> {{ media(aluno.t, aluno.p1, aluno.p2) }}</p>             
+            <hr>
+            <a class="btn btn-success" href="{{ url_for("Aluno.edit", id=aluno.id) }}">Editar</a> |
+            <a class="btn btn-danger" href="{{ url_for("Aluno.delete", id=aluno.id) }}">Delete</a>
+        </div><!-- ./col -->
+    {% endfor %}
+    </div><!-- ./row -->
+</div>
+{% endblock %}

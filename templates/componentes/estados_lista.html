@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>Estados brasileiros</h1>
+<select class="form-control" name="estados">
+    {% for e in lista %}
+    <option value="{{e}}">{{e}}</option>
+    {% endfor %}
+</select>
+{% endblock %}

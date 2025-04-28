@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+    <h1>Jogo dos Carros</h1>
+    <p>Tente acertar a marca e o modelo</p>
+    <form method="post">
+        {% if mensagem %}
+        <div class="alert alert-danger">
+            <p>{{ mensagem }}</p>
+        </div> 
+        {% endif %}
+        <label>Marca</label>
+        <select class="form-control" name="marca">
+            {% for e in marcas %}
+            <option value="{{e}}">{{e}}</option>
+            {% endfor %}
+        </select> <br>
+        <label>Modelo</label>
+        <select class="form-control" name="modelo">
+            {% for e in modelos %}
+            <option value="{{e}}">{{e}}</option>
+            {% endfor %}
+        </select> <br>
+        <button type="submit" >Corrigir</button>
+    </form>
+</div>
+{% endblock %}
