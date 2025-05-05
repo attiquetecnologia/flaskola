@@ -19,6 +19,12 @@ def create_app(): # cria uma função para definir o aplicativo
         nome = "Rodrigo 123"
 
         return render_template("index.html", nome=nome) # combina o python com html
+    
+    @app.route("/enviar_arquivo")
+    def enviar_arquivo():
+        
+        return render_template("enviararquivo01.html")
+
 
     from componentes import bp
     app.register_blueprint(bp)
