@@ -14,11 +14,18 @@ def create_app(): # cria uma função para definir o aplicativo
     db.init_app(app)
     app.cli.add_command(init_db_command)
 
-    @app.route("/") # cria uma rota
-    def index(): # função que gerencia rota
-        nome = "Rodrigo 123"
+    from flask import Flask, render_template
 
-        return render_template("index.html", nome=nome) # combina o python com html
+app = Flask(__name__)
+
+# Rota da página inicial
+@app.route('/')
+def inicio():
+    return render_template('inicio.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 
     from componentes import bp
     app.register_blueprint(bp)
@@ -48,3 +55,5 @@ def init_db_command():
 
 if __name__ == "__main__": # 'função principal' do python
     create_app().run(debug=True, host="0.0.0.0") # executa o flask na porta http://127.0.0.1:5000
+
+
