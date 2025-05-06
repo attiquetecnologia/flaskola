@@ -20,6 +20,10 @@ def create_app(): # cria uma função para definir o aplicativo
 
         return render_template("index.html", nome=nome) # combina o python com html
 
+    @app.route("/trabalhos")
+    def trabalhos():
+        return render_template("trabalhos.html")
+
     from componentes import bp
     app.register_blueprint(bp)
 
@@ -48,3 +52,4 @@ def init_db_command():
 
 if __name__ == "__main__": # 'função principal' do python
     create_app().run(debug=True, host="0.0.0.0") # executa o flask na porta http://127.0.0.1:5000
+
