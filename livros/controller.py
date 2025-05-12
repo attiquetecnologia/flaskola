@@ -14,7 +14,7 @@ def listar_livros():
         "imagem": l.imagem,
         "sinopse": l.sinopse,
         "datadelancamento": l.datadelancamento.isoformat() if l.datadelancamento else None,
-        "avaliacao": l.avaliacao,
+        "autor": l.autor,
         "generos": l.generos
     } for l in livros])
 
@@ -27,7 +27,7 @@ def adicionar_livro():
             imagem=data['imagem'],
             sinopse=data.get('sinopse'),
             datadelancamento=datetime.strptime(data['datadelancamento'], "%Y-%m-%d") if data.get('datadelancamento') else None,
-            avaliacao=data.get('avaliacao'),
+            autor=data.get('autor'),
             generos=data.get('generos')
         )
         db.session.add(novo_livro)

@@ -10,4 +10,4 @@ class Livro(db.Model):
     sinopse = Column(String)
     datadelancamento = Column(Date)
     generos = Column(String)
-    avaliacao = Column(String)
+    autor = Column(String)
