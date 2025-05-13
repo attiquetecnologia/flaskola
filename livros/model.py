@@ -11,3 +11,4 @@ class Livro(db.Model):
     datadelancamento = Column(Date)
     generos = Column(String)
     autor = Column(String)
+    # ano_lancamento

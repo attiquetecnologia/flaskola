@@ -13,7 +13,7 @@ def listar_livros():
         "titulo": l.titulo,
         "imagem": l.imagem,
         "sinopse": l.sinopse,
-        "datadelancamento": l.datadelancamento.isoformat() if l.datadelancamento else None,
+        "datadelancamento": l.datadelancamento, #.isoformat() if l.datadelancamento else None,
         "autor": l.autor,
         "generos": l.generos
     } for l in livros])
