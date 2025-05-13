@@ -37,6 +37,8 @@ def create_app(): # cria uma função para definir o aplicativo
     app.register_blueprint(bp)
 
     return app # retorna o app criado
+
+
 def init_db():
     db.drop_all()
     db.create_all()
