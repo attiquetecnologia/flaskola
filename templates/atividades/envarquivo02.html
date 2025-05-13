@@ -1,3 +1,6 @@
+{% extends 'layout.html' %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -154,7 +157,7 @@
       <div class="form-group">
         <label for="file-upload">Anexar Documentos</label>
         <div class="upload-box" onclick="document.getElementById('file-upload').click()">
-          <img src="images/nuvem.png" alt="Upload Icon">
+          <img src="/static/images/nuvem.png" alt="Upload Icon">
           <div class="upload-text">Serão aceitos arquivos:</div>
           <div class="upload-accepted">.png, .jpg, .txt, .docx</div>
         </div>
@@ -168,3 +171,5 @@
   </div>
 </body>
 </html>
+
+{% endblock %}
