@@ -1,7 +1,7 @@
-from flask import Blueprint, redirect, render_template, request, url_for, flash
+from flask import Blueprint, redirect, render_template, request, url_for, flash, jsonify
 from sqlalchemy import select
 from database.connection import db
-from .model import atividade
+from .model import Atividade
 from werkzeug.utils import secure_filename
 import os
 
@@ -15,7 +15,7 @@ def arquivo_permitido(filename):
 
 @bp.route("/atividades/lista")
 def lista():
-    lista = db.session.scalars(select(atividade))
+    lista = db.session.scalars(select(Atividade))
 
     # Função lambda cria funções de 1 linha só
     # media = lambda t,p1,p2: t*.3+p1*.35+p2*.35
@@ -23,6 +23,19 @@ def lista():
         return t*.3+p1*.35+p2*.35
 
     return render_template("atividades/lista.html", lista=lista, media=media)
+
+@bp.route("/lista_atividades", methods=["GET"])
+def listar_atividades():
+    atividades = Atividade.query.all()
+    return jsonify([{
+        "id": l.id,
+        "titulo": l.titulo,
+        "descrição": l.descricao,
+        "anexo": l.anexo,
+        "data_de_criacao": l.data_de_criacao,
+        "links": l.links,
+        "nota": l.nota,
+    } for l in atividades])
 
 @app.route("/enviar_arquivo", methods=["GET", "POST"])
 def enviar_arquivo():
