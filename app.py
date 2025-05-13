@@ -67,6 +67,9 @@ def create_app():
     from alunos.controller import bp
     app.register_blueprint(bp)
 
+    from atividades.controller import bp
+    app.register_blueprint(bp)
+
     return app
 
 def init_db():
