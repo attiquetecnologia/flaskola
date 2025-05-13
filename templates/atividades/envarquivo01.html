@@ -1,123 +1,126 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Envio</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+{% extends 'layout.html' %}
+{% block content %}
 
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      width: 90%;
-      max-width: 900px;
-      background-color: #fff;
-      padding: 20px;
-    }
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
 
-    .left-side {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    width: 90%;
+    max-width: 1000px;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    label {
-      font-weight: bold;
-      margin-bottom: 8px;
-      font-size: 1.2em;
-      color: #000;
-    }
+  .row {
+    display: flex;
+    gap: 20px;
+  }
 
-    input[type="text"],
-    textarea {
-      padding: 10px;
-      border: 1px solid #999;
-      border-radius: 8px;
-      resize: none;
-      font-size: 1em;
-    }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 
-    textarea {
-      height: 100px;
-    }
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #000;
+  }
 
-    .right-side {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
+  input[type="text"],
+  input[type="date"],
+  textarea {
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 8px;
+    resize: none;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
 
-    .upload-box {
-      border: 1px solid #999;
-      border-radius: 10px;
-      width: 100%;
-      width: 450px;
-      height: 350px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+  textarea {
+    height: 80px;
+  }
 
-    .upload-box img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 10px;
-    }
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
 
-    .upload-text {
-      font-size: 0.9em;
-      color: #555;
-    }
+  .upload-box {
+    border: 1px solid #999;
+    border-radius: 10px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-    .upload-accepted {
-      font-size: 0.8em;
-      color: #aaa;
-      margin-top: 5px;
-    }
+  .upload-box img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
 
-    .button-container {
-      margin-top: 20px;
-      width: 100%;
-      text-align: center;
-    }
+  .upload-text {
+    font-size: 0.9em;
+    color: #555;
+  }
 
-    button {
-      background-color: #67a7cc;
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      font-size: 1.2em;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+  .upload-accepted {
+    font-size: 0.8em;
+    color: #aaa;
+    margin-top: 5px;
+  }
 
-    button:hover {
-      background-color: #558cb0;
-    }
-  </style>
-</head>
-<body>
+  .button-container {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  button {
+    background-color: #67a7cc;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #558cb0;
+  }
+</style>
   <div class="container">
     <div class="left-side">
       <div class="form-group">
@@ -138,7 +141,7 @@
       <div class="form-group">
         <label for="file-upload">Anexar Documentos</label>
         <div class="upload-box" onclick="document.getElementById('file-upload').click()">
-          <img src="images/nuvem.png" alt="Upload Icon">
+          <img src="/static/images/nuvem.png" alt="Upload Icon">
           <div class="upload-text">Serão aceitos arquivos:</div>
           <div class="upload-accepted">.png, .jpg, .txt, .docx</div>
         </div>
@@ -150,5 +153,4 @@
       </div>
     </div>
   </div>
-</body>
-</html>
+  {% endblock %}

@@ -20,6 +20,10 @@ def create_app(): # cria uma função para definir o aplicativo
 
         return render_template("index.html", nome=nome) # combina o python com html
 
+    @app.route("/envio_atividade")
+    def envio_atividade():
+        return render_template("atividades/envarquivo02.html")
+    
     from componentes import bp
     app.register_blueprint(bp)
 
