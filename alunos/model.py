@@ -7,7 +7,7 @@ class Aluno(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     nome = Column(String, nullable=False)
     email = Column(String, nullable=False)
-    senha = Column(String)
+    senha = Column(String)    
     t = Column(Double)
     p1 = Column(Double)
     p2 = Column(Double)

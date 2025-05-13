@@ -1,0 +1,156 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    width: 90%;
+    max-width: 1000px;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #000;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  textarea {
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 8px;
+    resize: none;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 80px;
+  }
+
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .upload-box {
+    border: 1px solid #999;
+    border-radius: 10px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .upload-box img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .upload-text {
+    font-size: 0.9em;
+    color: #555;
+  }
+
+  .upload-accepted {
+    font-size: 0.8em;
+    color: #aaa;
+    margin-top: 5px;
+  }
+
+  .button-container {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  button {
+    background-color: #67a7cc;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #558cb0;
+  }
+</style>
+  <div class="container">
+    <div class="left-side">
+      <div class="form-group">
+        <label for="titulo">Título do Trabalho</label>
+        <input type="text" id="titulo" placeholder="Título do trabalho">
+      </div>
+      <div class="form-group">
+        <label for="links">Links</label>
+        <textarea id="links" placeholder="https://exemplo.com/exemplo"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="caixa-texto">Caixa de texto:</label>
+        <textarea id="caixa-texto" placeholder="Texto de exemplo"></textarea>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <div class="form-group">
+        <label for="file-upload">Anexar Documentos</label>
+        <div class="upload-box" onclick="document.getElementById('file-upload').click()">
+          <img src="/static/images/nuvem.png" alt="Upload Icon">
+          <div class="upload-text">Serão aceitos arquivos:</div>
+          <div class="upload-accepted">.png, .jpg, .txt, .docx</div>
+        </div>
+        <input type="file" id="file-upload" style="display:none;">
+      </div>
+
+      <div class="button-container">
+        <button type="button">ENVIAR</button>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

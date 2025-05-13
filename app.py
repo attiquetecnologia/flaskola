@@ -13,16 +13,12 @@ def create_app(): # cria uma função para definir o aplicativo
     
     db.init_app(app)
     app.cli.add_command(init_db_command)
+    
 
-    @app.route("/") # cria uma rota
-    def index(): # função que gerencia rota
-        nome = "Rodrigo 123"
-
-        return render_template("index.html", nome=nome) # combina o python com html
-
-    @app.route("/trabalhos")
-    def trabalhos():
-        return render_template("trabalhos.html")
+    # Rota da página inicial
+    @app.route('/')
+    def index():
+        return render_template('index.html')
 
     from componentes import bp
     app.register_blueprint(bp)
@@ -33,7 +29,11 @@ def create_app(): # cria uma função para definir o aplicativo
     from alunos.controller import bp
     app.register_blueprint(bp)
 
+    from livros.controller import bp  # <-- caminho atualizado
+    app.register_blueprint(bp)
+
     return app # retorna o app criado
+
 
 def init_db():
     db.drop_all()
@@ -45,11 +45,15 @@ def init_db():
 @with_appcontext
 def init_db_command():
     """Clear existing data and create new tables."""
-    
     init_db()
     click.echo("Initialized the database.")
+
     
 
 if __name__ == "__main__": # 'função principal' do python
     create_app().run(debug=True, host="0.0.0.0") # executa o flask na porta http://127.0.0.1:5000
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5a4f7fc3e58030b4cdc54a13d82e90ed44415687
