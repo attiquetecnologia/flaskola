@@ -32,7 +32,7 @@ def create_app():
         if request.method == "POST":
             titulo = request.form.get("titulo")
             links = request.form.get("links")
-            texto = request.form.get("texto")
+            descricao = request.form.get("descricao")
             arquivos = request.files.getlist("arquivo")
 
             success_count = 0
