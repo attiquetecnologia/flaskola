@@ -24,7 +24,7 @@ def lista():
 
     return render_template("atividades/lista.html", lista=lista, media=media)
 
-@bp.route("/lista_atividades", methods=["GET"])
+@bp.route("/atividades/lista_atividades", methods=["GET"])
 def listar_atividades():
     atividades = Atividade.query.all()
     return jsonify([{
