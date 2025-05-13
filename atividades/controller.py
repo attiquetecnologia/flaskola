@@ -37,7 +37,7 @@ def listar_atividades():
         "nota": l.nota,
     } for l in atividades])
 
-@app.route("/enviar_arquivo", methods=["GET", "POST"])
+@bp.route("/enviar_arquivo", methods=["GET", "POST"])
 def enviar_arquivo():
     if request.method == "POST":
         titulo = request.form.get("titulo")
