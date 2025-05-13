@@ -14,18 +14,10 @@ def create_app(): # cria uma função para definir o aplicativo
     db.init_app(app)
     app.cli.add_command(init_db_command)
 
-    from flask import Flask, render_template
-
-app = Flask(__name__)
-
-# Rota da página inicial
-@app.route('/')
-def inicio():
-    return render_template('inicio.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
+    # Rota da página inicial
+    @app.route('/')
+    def index():
+        return render_template('index.html')
 
     from componentes import bp
     app.register_blueprint(bp)
