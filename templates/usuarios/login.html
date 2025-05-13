@@ -107,18 +107,18 @@
         <div class="logo">
             <img src="imagem/logo_senai.png" alt="Logo do SENAI">
         </div>
-        <form>
+        <form method="post" action="/login">
             <div class="mb-3 text-start">
                 <label class="form-label text-white">LOGIN</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Usuário">
+                    <input type="text" name="email" class="form-control" placeholder="Usuário">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                 </div>
             </div>
             <div class="mb-3 text-start">
                 <label class="form-label text-white">SENHA</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="password" placeholder="Senha">
+                    <input type="password" name="senha" class="form-control" id="password" placeholder="Senha">
                     <span class="input-group-text" onclick="togglePassword()">
                         <i id="toggleIcon" class="fa fa-eye"></i>
                     </span>
