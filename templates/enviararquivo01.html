@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Envio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      width: 90%;
+      max-width: 900px;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 1.2em;
+      color: #000;
+    }
+
+    input[type="text"],
+    textarea {
+      padding: 10px;
+      border: 1px solid #999;
+      border-radius: 8px;
+      resize: none;
+      font-size: 1em;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    .right-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .upload-box {
+      border: 1px solid #999;
+      border-radius: 10px;
+      width: 450px;
+      height: 350px;
+      padding: 20px;
+      box-sizing: border-box;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upload-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      text-align: center;
+    }
+
+    .default-upload {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .upload-text {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .upload-accepted {
+      font-size: 0.8em;
+      color: #aaa;
+      line-height: 1.4;
+    }
+
+    .preview-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .file-preview {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f8f9fa;
+    }
+
+    .file-thumbnail {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .file-name {
+      font-size: 0.7em;
+      text-align: center;
+      word-break: break-all;
+      margin-top: 5px;
+    }
+
+    .hide-default {
+      display: none !important;
+    }
+
+    .button-container {
+      margin-top: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    button {
+      background-color: #67a7cc;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.2em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .flash-success {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      grid-column: span 2;
+    }
+
+    .flash-danger {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <form class="container" method="POST" enctype="multipart/form-data">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="left-side">
+      <div class="form-group">
+        <label for="titulo">Título do Trabalho</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Título do trabalho" required>
+      </div>
+      <div class="form-group">
+        <label for="links">Links</label>
+        <textarea id="links" name="links" placeholder="https://exemplo.com/exemplo"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="caixa-texto">Caixa de texto:</label>
+        <textarea id="caixa-texto" name="descricao" placeholder="Texto de exemplo"></textarea>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <div class="form-group">
+        <label for="file-upload">Anexar Documentos</label>
+        <div class="upload-box" onclick="document.getElementById('file-upload').click()">
+          <div class="upload-content">
+            <img src="/static/images/nuvem.webp" alt="Upload Icon" class="default-upload">
+            <div class="upload-text">Arraste ou clique para adicionar arquivos</div>
+            <div class="upload-accepted">
+              Formatos aceitos:<br>
+              .png, .jpg, .jpeg<br>
+              .txt, .docx
+            </div>
+          </div>
+          <div class="preview-container"></div>
+        </div>
+        <input type="file" id="file-upload" name="arquivo" style="display:none;" multiple required>
+      </div>
+
+      <div class="button-container">
+        <button type="submit">ENVIAR</button>
+      </div>
+      
+      <script>
+        const fileInput = document.getElementById('file-upload');
+        const previewContainer = document.querySelector('.preview-container');
+        const defaultContent = document.querySelector('.upload-content');
+
+        fileInput.addEventListener('change', function() {
+          previewContainer.innerHTML = '';
+          const files = fileInput.files;
+          
+          if (files.length > 0) {
+            defaultContent.classList.add('hide-default');
+          } else {
+            defaultContent.classList.remove('hide-default');
+          }
+
+          Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            const preview = document.createElement('div');
+            preview.className = 'file-preview';
+
+            const extension = file.name.split('.').pop().toLowerCase();
+            let thumbSrc = '/static/images/file-icon.png';
+
+            if (file.type.startsWith('image/')) {
+              reader.onload = (e) => {
+                preview.innerHTML = `
+                  <img src="${e.target.result}" class="file-thumbnail">
+                  <div class="file-name">${file.name}</div>
+                `;
+              }
+              reader.readAsDataURL(file);
+            } else {
+              switch(extension) {
+                case 'docx':
+                case 'doc':
+                  thumbSrc = '/static/images/texto.png';
+                  break;
+                case 'txt':
+                  thumbSrc = '/static/images/txt-icon.png';
+                  break;
+              }
+              preview.innerHTML = `
+                <img src="${thumbSrc}" class="file-thumbnail">
+                <div class="file-name">${file.name}</div>
+              `;
+            }
+            previewContainer.appendChild(preview);
+          });
+        });
+      </script>
+    </div>
+  </form>
+</body>
+</html>
