@@ -4,8 +4,8 @@ from flask.cli import with_appcontext
 from sqlalchemy import text
 from database.connection import db
 
-def create_app(): # cria uma função para definir o aplicativo
-    app = Flask(__name__) # instancia o Flask
+def create_app():
+    app = Flask(__name__)
     app.secret_key = "abax"
 
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///flaskola.db"
@@ -14,11 +14,14 @@ def create_app(): # cria uma função para definir o aplicativo
     db.init_app(app)
     app.cli.add_command(init_db_command)
 
-    @app.route("/") # cria uma rota
-    def index(): # função que gerencia rota
+    @app.route("/")  # rota principal
+    def index():
         nome = "Rodrigo 123"
+        return render_template("index.html", nome=nome)
 
-        return render_template("index.html", nome=nome) # combina o python com html
+    @app.route("/admin")  # 👈 rota do painel administrativo
+    def painel_admin():
+        return render_template("admin.html")
 
     from componentes import bp
     app.register_blueprint(bp)
@@ -29,7 +32,8 @@ def create_app(): # cria uma função para definir o aplicativo
     from alunos.controller import bp
     app.register_blueprint(bp)
 
-    return app # retorna o app criado
+    return app
+
 
 def init_db():
     db.drop_all()

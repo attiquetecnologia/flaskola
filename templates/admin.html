@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <img src="https://www.sp.senai.br/images/senai.png" alt="SENAI">
+        <div>
+            <h2>TL012</h2>
+            <p>(Painel Administrativo)</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside>
+            <h3>Painel Administrativo</h3>
+            <ul>
+                <li><strong>Configurações Básicas</strong></li>
+                <li>⚙️ Configurações</li>
+                <li><strong>Gerenciamento do Site</strong></li>
+                <li>👤 Usuários</li>
+                <li>📝 Postagens</li>
+                <li><strong>Mídia do Site</strong></li>
+                <li>📚 Livros</li>
+                <li>▶️ Mídia</li>
+            </ul>
+        </aside>
+
+        <main>
+            <h1>Bem Vindo!</h1>
+            <section class="content">
+                <div class="postagens">
+                    <h2>Postagens</h2>
+                    <div class="box">
+                        <p>*Aqui pode ser postagem de todos os usuários do site, tanto professores quanto alunos</p>
+                    </div>
+                </div>
+                <div class="usuarios">
+                    <h2>Usuários</h2>
+                    <div class="box">
+                        <p>👤 XXXXXXXXXX (professor)</p>
+                        <a href="#">Gerenciar</a>
+                        <p class="nota">*Aqui pode mostrar a lista de usuários</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
