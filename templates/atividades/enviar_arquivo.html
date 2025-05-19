@@ -121,19 +121,21 @@
     background-color: #558cb0;
   }
 </style>
+  
   <div class="container">
+  <form method="post">
     <div class="left-side">
       <div class="form-group">
         <label for="titulo">Título do Trabalho</label>
-        <input type="text" id="titulo" placeholder="Título do trabalho">
+        <input type="text" id="titulo" name="titulo" placeholder="Título do trabalho">
       </div>
       <div class="form-group">
         <label for="links">Links</label>
-        <textarea id="links" placeholder="https://exemplo.com/exemplo"></textarea>
+        <textarea id="links" name="links" placeholder="https://exemplo.com/exemplo"></textarea>
       </div>
       <div class="form-group">
-        <label for="caixa-texto">Caixa de texto:</label>
-        <textarea id="caixa-texto" placeholder="Texto de exemplo"></textarea>
+        <label for="caixa-texto">Descrição:</label>
+        <textarea id="caixa-texto" name="descricao" placeholder="Texto de exemplo"></textarea>
       </div>
     </div>
 
@@ -145,12 +147,13 @@
           <div class="upload-text">Serão aceitos arquivos:</div>
           <div class="upload-accepted">.png, .jpg, .txt, .docx</div>
         </div>
-        <input type="file" id="file-upload" style="display:none;">
+        <input type="file" id="file-upload" name="arquivos" style="display:none;">
       </div>
 
       <div class="button-container">
-        <button type="button">ENVIAR</button>
+        <button type="submit">ENVIAR</button>
       </div>
     </div>
+  </form>
   </div>
   {% endblock %}
