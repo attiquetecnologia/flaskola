@@ -37,6 +37,9 @@ def create_app(): # cria uma função para definir o aplicativo
     from alunos.controller import bp
     app.register_blueprint(bp)
 
+    from testes.controller import bp
+    app.register_blueprint(bp)
+
     from livros.controller import bp  # <-- caminho atualizado
     app.register_blueprint(bp)
 
