@@ -1,5 +1,4 @@
-{% extends 'layout.html' %}
-{% block content %}
+
 
 <div class="container">
     <div class="d-flex flex-row">
@@ -29,7 +28,6 @@
             <a class="btn btn-success" href="{{ url_for("Aluno.edit", id=aluno.id) }}">Editar</a> |
             <a class="btn btn-danger" href="{{ url_for("Aluno.delete", id=aluno.id) }}">Delete</a>
         </div><!-- ./col -->
-    {% endfor %}
+    {% block content %}{% endblock %}
     </div><!-- ./row -->
 </div>
-{% endblock %}

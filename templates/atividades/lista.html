@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <style>
+    .container {
+      padding: 40px;
+    }
+
+    .container h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 100px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: black;
+      color: white;
+      padding: 40px;
+      width: 300px;
+      position: relative;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card img {
+      width: 100%;
+      margin-top: 20px;
+      background-color: #ddd;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .aluno-card {
+      border: 1px solid #ccc;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    .aluno-card img {
+      width: 100px;
+      height: auto;
+    }
+  </style>
+
+  <!-- Seção de Trabalhos -->
+  <div class="container">
+    <h2>Trabalhos</h2>
+    <div class="cards">
+      
+    
+      {% for atividade in lista %}
+       <div class="card">
+        <h3>titulo</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+       <div class="card">
+        <h3>descricao</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+       <div class="card">
+        <h3>anexo</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+       <div class="card">
+        <h3>data_de_criacao</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+       <div class="card">
+        <h3>links</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+       <div class="card">
+        <h3>nota</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+       <div class="card">
+        <h3>id</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+      
+      {% endfor %}
+
+    </div>
+  </div>
+
+{% endblock %}
