@@ -43,6 +43,9 @@ def create_app():
     from atividades.controller import bp
     app.register_blueprint(bp)
 
+    from pesquisa.controller import bp
+    app.register_blueprint(bp)
+
     return app # retorna o app criado
 
 
@@ -57,7 +60,6 @@ def init_db_command():
     init_db()
     click.echo("Initialized the database.")
 
-    
 
 if __name__ == "__main__": # 'função principal' do python
     create_app().run(debug=True, host="0.0.0.0") # executa o flask na porta http://127.0.0.1:5000

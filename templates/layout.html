@@ -159,8 +159,11 @@
   </div>
 
   <div class="search-bar-container">
-    <input type="text" class="search-bar" placeholder="Pesquisar..." />
+    <form method="get"   action="/pesquisa"> 
+    <input type="text" name="q" class="search-bar" placeholder="Pesquisar..." />
     <i class="fas fa-search search-icon"></i>
+    <input type="submit">
+    </form>
   </div>
 
   <div class="content">

@@ -1,33 +1,21 @@
-from flask import Flask, request, jsonify
-import sqlite3
+from flask import Blueprint, redirect, render_template, request, url_for, flash
+from sqlalchemy import select
+from database.connection import db
+from livros.model import Livro
 
-app = Flask(__name__)
 
-def conectar_banco():
-    return sqlite3.connect("biblioteca.db")
+bp = Blueprint("Pesquisa", __name__)
 
-@app.route('/pesquisa')
-def pesquisar():
+@bp.route("/pesquisa" , methods=("GET", "POST"))
+def pesquisa():
     termo = request.args.get('q', '')
     
-    conn = conectar_banco()
-    cursor = conn.cursor()
-
+    livros = Livro.query.all()
     # Busca por título, tipo ou autor com LIKE
     consulta = """
         SELECT * FROM acervo
         WHERE titulo LIKE ? OR tipo LIKE ? OR autor LIKE ?
     """
-    like_termo = f"%{termo}%"
-    cursor.execute(consulta, (like_termo, like_termo, like_termo))
-    resultados = cursor.fetchall()
-    conn.close()
-
+    
     # Retorna como JSON
-    return jsonify([
-        {"id": r[0], "titulo": r[1], "tipo": r[2], "autor": r[3]}
-        for r in resultados
-    ])
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return render_template("pesquisa/pesquisa.html", livros=livros)
