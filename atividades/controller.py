@@ -59,7 +59,12 @@ def enviar_arquivo():
                 error_messages.append(f"Arquivo inválido: {arquivo.filename}")
 
         if success_count > 0:
+            atividade = Atividade(**{"titulo": titulo, "links": links, "descricao": descricao
+            , "anexo": arquivos,})
+            db.session.add(atividade)
+            db.session.commit() # persiste no banco
             flash(f"{success_count} arquivo(s) enviado(s) com sucesso!", "success")
+
         if error_messages:
             flash("Erros: " + ", ".join(error_messages), "danger")
         
