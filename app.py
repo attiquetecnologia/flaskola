@@ -41,8 +41,7 @@ def create_app():
     from atividades.controller import bp
     app.register_blueprint(bp)
 
-    return app
-
+    return app # retorna o app criado
 
 def init_db():
     db.drop_all()
