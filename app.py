@@ -23,10 +23,6 @@ def create_app():
         nome = "Rodrigo 123"
         return render_template("index.html", nome=nome)
 
-    @app.route("/admin")  # 👈 rota do painel administrativo
-    def painel_admin():
-        return render_template("admin.html")
-
     # Registrar blueprints
     from componentes import bp
     app.register_blueprint(bp)
@@ -41,6 +37,9 @@ def create_app():
     app.register_blueprint(bp)
 
     from atividades.controller import bp
+    app.register_blueprint(bp)
+
+    from admin.controller import bp
     app.register_blueprint(bp)
 
     return app # retorna o app criado
