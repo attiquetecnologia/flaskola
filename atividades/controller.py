@@ -38,36 +38,25 @@ def enviar_anexo():
         titulo = request.form.get("titulo")
         links = request.form.get("links")
         descricao = request.form.get("descricao")
-        anexos = request.files.getlist("anexos")
+        anexo = request.files.get("anexos")
 
-        success_count = 0
-        error_messages = []
-        nomes_anexos = []
+        if anexo and anexo.filename != "" and anexo_permitido(anexo.filename):
+            nome_seguro = secure_filename(anexo.filename)
+            os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+            caminho_anexo = os.path.join(UPLOAD_FOLDER, nome_seguro)
+            anexo.save(caminho_anexo)
 
-        for anexo in anexos:
-            if anexo and anexo.filename != "" and anexo_permitido(anexo.filename):
-                nome_seguro = secure_filename(anexo.filename)
-                os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-                caminho_anexo = os.path.join(UPLOAD_FOLDER, nome_seguro)
-                anexo.save(caminho_anexo)
-                nomes_anexos.append(nome_seguro)
-                success_count += 1
-            else:
-                error_messages.append(f"Arquivo inválido: {anexo.filename}")
-
-        if success_count > 0:
             atividade = Atividade(
                 titulo=titulo,
                 links=links,
                 descricao=descricao,
-                anexo=",".join(nomes_anexos)
+                anexo=nome_seguro
             )
             db.session.add(atividade)
             db.session.commit()
-            flash(f"{success_count} anexo(s) enviado(s) com sucesso!", "success")
-
-        if error_messages:
-            flash("Erros: " + ", ".join(error_messages), "danger")
+            flash("Arquivo enviado com sucesso!", "success")
+        else:
+            flash("Arquivo inválido ou ausente!", "danger")
 
         return redirect("/atividades/enviar_anexo")
 
