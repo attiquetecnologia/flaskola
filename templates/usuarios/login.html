@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     body {
-        background: url('imagem/imagem.png') no-repeat center center;
+        background: url('/static/imagem.png') no-repeat center center;
         background-size: cover;
         background-color: #f0f0f0;
         display: flex;
@@ -105,20 +105,20 @@
 <body>
     <div class="login-box">
         <div class="logo">
-            <img src="imagem/logo_senai.png" alt="Logo do SENAI">
+            <img src="/static/sesi-logo.png" alt="Logo do SENAI">
         </div>
-        <form>
+        <form method="post" action="/login">
             <div class="mb-3 text-start">
                 <label class="form-label text-white">LOGIN</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Usuário">
+                    <input type="text" name="email" class="form-control" placeholder="Usuário">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                 </div>
             </div>
             <div class="mb-3 text-start">
                 <label class="form-label text-white">SENHA</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="password" placeholder="Senha">
+                    <input type="password" name="senha" class="form-control" id="password" placeholder="Senha">
                     <span class="input-group-text" onclick="togglePassword()">
                         <i id="toggleIcon" class="fa fa-eye"></i>
                     </span>

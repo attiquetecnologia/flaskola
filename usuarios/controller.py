@@ -40,3 +40,7 @@ def perfil():
             usuario = v # {"nome": "Batman", "t": 9.1, "p1": 8.5, "p2": 9, "avatar": url_for('static', filename="images/batman.jpg"), "usuario":"batman@email.com", "senha":"curinga"}
     
     return render_template("usuarios/perfil.html", usuario=usuario)
+
+@bp.route("/alterar_senha")
+def alterar_senha():
+    return render_template("usuarios/alterar_senha.html")

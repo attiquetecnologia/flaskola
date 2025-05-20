@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Trabalhos SENAI</title>
+{% extends 'layout.html' %}
+
+{% block styles %}
   <style>
     body {
       margin: 0;
@@ -52,7 +50,9 @@
       object-fit: cover;
     }
   </style>
-<body>
+  {% endblock %}
+
+{% block content %}
   <div class="container">
     <h2>Trabalhos</h2>
 
@@ -81,7 +81,6 @@
         <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
       </div>
     </div>
-  </div>
 
-</body>
-</html>
+  </div>
+{% endblock %}

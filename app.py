@@ -15,6 +15,8 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = "abax"
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///flaskola.db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:1234@10.134.75.83/flaskola?charset=utf8mb4"
+
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -36,6 +38,9 @@ def create_app():
     app.register_blueprint(bp)
 
     from alunos.controller import bp
+    app.register_blueprint(bp)
+
+    from testes.controller import bp
     app.register_blueprint(bp)
 
     from livros.controller import bp
