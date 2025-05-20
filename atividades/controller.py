@@ -18,6 +18,11 @@ def lista():
     lista = db.session.scalars(select(Atividade))
     return render_template("atividades/lista.html", lista=lista)
 
+@bp.route("/atividades/teste")
+def teste():
+    lista = db.session.scalars(select(Atividade))
+    return render_template("usuarios/teste.html")
+
 @bp.route("/lista_atividades", methods=["GET"])
 def listar_atividades():
     atividades = Atividade.query.all()
