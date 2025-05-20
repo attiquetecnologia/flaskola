@@ -7,7 +7,8 @@ bp = Blueprint("Livros", __name__, url_prefix="/livros")
 
 @bp.route("lista")
 def lista():
-    return render_template("livros/lista.html")
+    livros = Livro.query.all()
+    return render_template("livros/lista.html", livros)
 
 @bp.route("/livros02/", methods=["GET"])
 def listar_livros():
