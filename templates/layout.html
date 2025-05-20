@@ -130,6 +130,7 @@
     }
 
     .sidebar div {
+    
       width: 100%;
       padding: 20px 0;
       text-align: center;
@@ -138,6 +139,15 @@
       border-bottom: 1px solid #548ca3;
       cursor: pointer;
     }
+
+    .sidebar div a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
 
     .sidebar div:hover {
       background-color: #527f9e;
@@ -163,14 +173,22 @@
     .user-menu div {
       padding: 14px 22px;
       cursor: pointer;
-      color: #333;
       transition: all 0.25s ease;
       border-bottom: 1px solid #eee;
       display: flex;
-      align-items: center;
       gap: 12px;
       font-size: 15px;
     }
+
+    .user-menu div a {
+      color: #333;
+      text-decoration: none;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      height: 100%;
+      }
+
 
     .user-menu div:last-child {
       border-bottom: none;
@@ -210,6 +228,7 @@
 
   <!-- Menu de usuário -->
   <div class="user-menu" id="userOptions"></div>
+  
 
   <!-- Barra de pesquisa -->
   <div class="search-bar-container">
