@@ -15,9 +15,7 @@ def anexo_permitido(filename):
 @bp.route("/atividades/lista")
 def lista():
     lista = db.session.scalars(select(Atividade))
-    def media(t, p1, p2):
-        return t * 0.3 + p1 * 0.35 + p2 * 0.35
-    return render_template("atividades/lista.html", lista=lista, media=media)
+    return render_template("atividades/lista.html", lista=lista)
 
 @bp.route("/lista_atividades", methods=["GET"])
 def listar_atividades():
