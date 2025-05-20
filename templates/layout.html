@@ -229,8 +229,8 @@
     const livrosBtn = document.getElementById('livrosBtn');
     const overlay = document.getElementById('overlay');
 
-    const isLoggedIn = true; // Mude para false se o usuário não estiver logado
-    const userName = 'João Silva'; // Nome do usuário
+    const isLoggedIn = {% if 'user' in session %}true{%else%}false{%endif%}; // Mude para false se o usuário não estiver logado
+    const userName = {% if 'user' in session %}'Nome usuario'{%else%}'false'{%endif%}; // Nome do usuário
 
     userBtn.addEventListener('click', () => {
       if (userOptions.style.display === 'block') {
