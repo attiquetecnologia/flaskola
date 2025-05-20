@@ -4,7 +4,11 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
 }
-
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
 body {
       margin: 0;
       padding: 0;
