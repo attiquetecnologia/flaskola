@@ -18,6 +18,10 @@
       <div><a href="{{url_for('index')}}">Início</a></div>
       <div><a href="{{url_for('Livros.lista')}}">Livros</a></div>
       <div><a href="{{url_for('Atividades.lista')}}">Atividades</a></div>
-      <div><a href="{{url_for('Livros.lista')}}">Postagem</a></div>
+      {% if 'user' in session %}
+      <div><a href="{{url_for('Atividades.eviar_anexos')}}">Enviar Atividade</a></div>
+      {% endif %}
+      
+  
     </div>
   </div>
