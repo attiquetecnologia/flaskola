@@ -1,3 +1,5 @@
+from sqlalchemy import Column, String, Integer, Double
+from database.connection import db
 
 class Atividade(db.Model):
     __tablename__ = "atividades"
