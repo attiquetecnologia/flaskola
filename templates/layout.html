@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Layout</title>
+  <title>Flaskola</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
   <style>
     body {
       margin: 0;
@@ -42,16 +43,27 @@
       height: 50px;
       border-radius: 50%;
       border: 2px solid #f6efc2;
-      background-color: transparent;
+      background-color: #527f9e;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-right:hover {
+      background-color: #406983;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .navbar-right:hover i {
+      color: #f6efc2;
     }
 
     .navbar-right i {
       color: #f6efc2;
-      font-size: 24px;
+      font-size: 22px;
     }
 
     .search-bar-container {
@@ -85,6 +97,7 @@
       min-height: 600px;
     }
 
+    /* Overlay lateral */
     .overlay {
       display: none;
       position: fixed;
@@ -130,42 +143,133 @@
       background-color: #527f9e;
     }
 
-    
-    ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #527f9e;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1);
-        }
+    /* Menu de usuário */
+    .user-menu {
+      display: none;
+      position: absolute;
+      top: 110px;
+      right: 30px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      min-width: 240px;
+      z-index: 101;
+      overflow: hidden;
+      animation: fadeIn 0.2s ease-in-out;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: all 0.3s ease;
+    }
 
+    .user-menu div {
+      padding: 14px 22px;
+      cursor: pointer;
+      color: #333;
+      transition: all 0.25s ease;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+    }
+
+    .user-menu div:last-child {
+      border-bottom: none;
+    }
+
+    .user-menu div:hover {
+      background: linear-gradient(90deg, #f5faff, #e8f1f8);
+    }
+
+    .user-menu .user-name {
+      font-weight: 600;
+      color: #1c3d57;
+      background-color: #f0f4f8;
+      cursor: default;
+      font-size: 16px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #527f9e;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
   </style>
+
+  {% block styles %} {% endblock %}
 </head>
 
 <body>
-  <div class="navbar">
-    <div class="navbar-left">
-      <img src="{{ url_for('static', filename='images/menu_livros.png')}}" alt="Ícone de pilha de livros" />
-    </div>
-    <div class="navbar-center">
-      <img src="static/images/logo_senai.png" alt="Logotipo do SENAI" />
-    </div>
-    <div class="navbar-right">
-      <i class="fas fa-user"></i>
-    </div>
-  </div>
+  {% include 'navbar.html' %}
 
+  <!-- Menu de usuário -->
+  <div class="user-menu" id="userOptions"></div>
+
+  <!-- Barra de pesquisa -->
   <div class="search-bar-container">
     <input type="text" class="search-bar" placeholder="Pesquisar..." />
     <i class="fas fa-search search-icon"></i>
   </div>
 
+  <!-- Conteúdo -->
   <div class="content">
     {% block content %}{% endblock %}
   </div>
+
+  <!-- Scripts -->
+  <script>
+    const userBtn = document.getElementById('userBtn');
+    const userOptions = document.getElementById('userOptions');
+    const livrosBtn = document.getElementById('livrosBtn');
+    const overlay = document.getElementById('overlay');
+
+    const isLoggedIn = true; // Mude para false se o usuário não estiver logado
+    const userName = 'João Silva'; // Nome do usuário
+
+    userBtn.addEventListener('click', () => {
+      if (userOptions.style.display === 'block') {
+        userOptions.style.display = 'none';
+        return;
+      }
+
+      if (isLoggedIn) {
+        userOptions.innerHTML = `
+          <div class="user-name"><i class="fas fa-user"></i> ${userName}</div>
+          <div> <a href='{{url_for('Usuario.alterar_senha')}}'><i class="fas fa-key"></i> Alterar Senha</a></div>
+          <div><a href='{{url_for('Usuario.logout')}}'><i class="fas fa-sign-out-alt"></i> Sair da Conta</a></div>
+        `;
+      } else {
+        userOptions.innerHTML = `
+          <div onclick="window.location.href='/login'"><i class="fas fa-sign-in-alt"></i> Entrar na Conta</div>
+        `;
+      }
+
+      userOptions.style.display = 'block';
+    });
+
+    window.addEventListener('click', function (e) {
+      if (!userBtn.contains(e.target) && !userOptions.contains(e.target)) {
+        userOptions.style.display = 'none';
+      }
+    });
+
+    livrosBtn.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 
 </html>
+

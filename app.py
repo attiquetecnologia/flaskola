@@ -36,14 +36,24 @@ def create_app():
     from alunos.controller import bp
     app.register_blueprint(bp)
 
+<<<<<<< HEAD
+=======
+    from testes.controller import bp
+    app.register_blueprint(bp)
+
+>>>>>>> 9dd7516f52d1ef7c4dd7655f4c4c473a155376d2
     from livros.controller import bp  # <-- caminho atualizado
     app.register_blueprint(bp)
 
     from atividades.controller import bp
     app.register_blueprint(bp)
 
+<<<<<<< HEAD
     return app
 
+=======
+    return app # retorna o app criado
+>>>>>>> 9dd7516f52d1ef7c4dd7655f4c4c473a155376d2
 
 def init_db():
     db.drop_all()
@@ -57,4 +67,8 @@ def init_db_command():
     click.echo("Initialized the database.")
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     create_app().run(debug=True, host="0.0.0.0")
+=======
+    create_app().run(debug=True, host="0.0.0.0")
+>>>>>>> 9dd7516f52d1ef7c4dd7655f4c4c473a155376d2

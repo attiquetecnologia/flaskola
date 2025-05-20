@@ -1,7 +1,13 @@
 {% extends 'layout.html' %}
 
-{% block content %}
+{% block styles %}
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
+
     .container {
       padding: 40px;
     }
@@ -29,6 +35,13 @@
       margin-top: 0;
     }
 
+    .icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+    }
+
     .card img {
       width: 100%;
       margin-top: 20px;
@@ -36,73 +49,38 @@
       height: 200px;
       object-fit: cover;
     }
-
-    .aluno-card {
-      border: 1px solid #ccc;
-      margin: 10px;
-      padding: 15px;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-    }
-
-    .aluno-card img {
-      width: 100px;
-      height: auto;
-    }
   </style>
+  {% endblock %}
 
-  <!-- Seção de Trabalhos -->
+{% block content %}
   <div class="container">
     <h2>Trabalhos</h2>
+
     <div class="cards">
+      <!-- Card 1 -->
+      <div class="card">
+        
+        <h3>TITULO</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        
+        <h3>TITULO</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
       
-    
-      {% for atividade in lista %}
-       <div class="card">
-        <h3>titulo</h3>
+        <h3>TITULO</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
         <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
       </div>
-
-       <div class="card">
-        <h3>descricao</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
-      </div>
-
-       <div class="card">
-        <h3>anexo</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
-      </div>
-
-       <div class="card">
-        <h3>data_de_criacao</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
-      </div>
-
-       <div class="card">
-        <h3>links</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
-      </div>
-
-       <div class="card">
-        <h3>nota</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
-      </div>
-
-       <div class="card">
-        <h3>id</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
-      </div>
-      
-      {% endfor %}
-
     </div>
-  </div>
 
+  </div>
 {% endblock %}
