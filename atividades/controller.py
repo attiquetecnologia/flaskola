@@ -31,7 +31,7 @@ def listar_atividades():
         "nota": l.nota,
     } for l in atividades])
 
-@bp.route("/enviar_arquivo", methods=["GET", "POST"])
+@bp.route("/atividades/enviar_arquivo", methods=["GET", "POST"])
 def enviar_arquivo():
     if request.method == "POST":
         titulo = request.form.get("titulo")
@@ -57,9 +57,9 @@ def enviar_arquivo():
         if error_messages:
             flash("Erros: " + ", ".join(error_messages), "danger")
         
-        return redirect("/enviar_arquivo")
+        return redirect("/atividades/enviar_arquivo")
 
-    return render_template("enviararquivo01.html")
+    return render_template("/atividades/enviar_arquivo.html")
 
 @bp.route("/atividades/add", methods=("GET", "POST"))
 def add():
