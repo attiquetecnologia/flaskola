@@ -3,13 +3,13 @@ from livros.model import Livro  # <--- IMPORT CORRETO
 from database.connection import db
 from datetime import datetime
 
-bp = Blueprint("livros", __name__, url_prefix="/livros")
+bp = Blueprint("Livros", __name__, url_prefix="/livros")
 
-@bp.route("/livros/lista")
+@bp.route("lista")
 def lista():
     return render_template("livros/lista.html")
 
-@bp.route("livros02/", methods=["GET"])
+@bp.route("/livros02/", methods=["GET"])
 def listar_livros():
     livros = Livro.query.all()
     return jsonify([{
@@ -22,7 +22,7 @@ def listar_livros():
         "generos": l.generos
     } for l in livros])
 
-@bp.route("livros01/", methods=["POST"])
+@bp.route("/livros01/", methods=["POST"])
 def adicionar_livro():
     data = request.get_json()
     try:

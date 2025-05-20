@@ -206,17 +206,7 @@
 </head>
 
 <body>
-  <div class="navbar">
-    <div class="navbar-left" id="livrosBtn">
-      <img src="{{ url_for('static', filename='images/menu_livros.png')}}" alt="Ícone de pilha de livros" />
-    </div>
-    <div class="navbar-center">
-      <img src="static/images/logo_senai.png" alt="Logotipo do SENAI" />
-    </div>
-    <div class="navbar-right" id="userBtn">
-      <i class="fas fa-user"></i>
-    </div>
-  </div>
+  {% include 'navbar.html' %}
 
   <!-- Menu de usuário -->
   <div class="user-menu" id="userOptions"></div>
@@ -230,17 +220,6 @@
   <!-- Conteúdo -->
   <div class="content">
     {% block content %}{% endblock %}
-  </div>
-
-  <!-- Overlay lateral -->
-  <div id="overlay" class="overlay">
-    <div class="sidebar">
-      <img src="{{ url_for('static', filename='images/menu_livros.png')}}" alt="Livros" />
-      <div>Início</div>
-      <div>Livros</div>
-      <div>Trabalhos</div>
-      <div>Postagem</div>
-    </div>
   </div>
 
   <!-- Scripts -->
@@ -262,8 +241,8 @@
       if (isLoggedIn) {
         userOptions.innerHTML = `
           <div class="user-name"><i class="fas fa-user"></i> ${userName}</div>
-          <div onclick="window.location.href='/trocar-senha'"><i class="fas fa-key"></i> Trocar Senha</div>
-          <div onclick="window.location.href='/logout'"><i class="fas fa-sign-out-alt"></i> Sair da Conta</div>
+          <div> <a href='{{url_for('Usuario.alterar_senha')}}'><i class="fas fa-key"></i> Alterar Senha</a></div>
+          <div><a href='{{url_for('Usuario.logout')}}'><i class="fas fa-sign-out-alt"></i> Sair da Conta</a></div>
         `;
       } else {
         userOptions.innerHTML = `
